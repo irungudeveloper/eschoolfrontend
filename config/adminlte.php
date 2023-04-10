@@ -291,6 +291,7 @@ return [
 
     'menu' => [
         // Navbar items:
+        
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
@@ -367,6 +368,34 @@ return [
                 ],
             ],
         ],
+
+
+        [
+            'text'    => 'Personnel Management',
+            'can'    => 'tutor',
+            'submenu' => [
+                [
+                    'text'    => 'Invites',
+                    'shift'   => 'ml-3',
+                    'submenu' => [
+                        [
+                            'text'  => 'View Invites',
+                            'icon'  => 'fas  fa-users',
+                            'shift' => 'ml-4',
+                            'url'  => '#',
+                        ],
+                        [
+                            'text'  => 'View Admin',
+                            'icon'  => 'fas  fa-users',
+                            'shift' => 'ml-4',
+                            'url'  => '#',
+                            'can'    => 'tutor',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -379,9 +408,9 @@ return [
             'url'        => '#',
         ],
         [
-            'text'       => 'information',
+            'text'       => 'logout',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'route'        => 'logout',
         ],
     ],
 
