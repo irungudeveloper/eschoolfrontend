@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\Admin\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,11 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
+
+Route::get('/',[LandingController::class,'landingPage'])->name('landing');
 
 // Auth::routes();
 
@@ -39,6 +42,13 @@ Route::middleware('custom.auth')->group(function ()
 {
     Route::get('/home', [HomeController::class,'index'])->name('home');
     Route::get('/logout', [LoginController::class,'logout'])->name('logout');
+
+    Route::controller(CourseController::class)->group(function () 
+    {
+        Route::get('/courses', 'index')->name('courses.all');
+        Route::get('/course/create', 'create')->name('courses.create');
+    });
+
 });
 
 // Route::get('/home', function() {

@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">You are logged in! {{ session('user')->role_id }}</p>
+                    <p class="mb-0">You are in course creation page!</p>
                 </div>
             </div>
         </div>

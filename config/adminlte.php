@@ -396,6 +396,27 @@ return [
             ],
         ],
 
+        ['header'=> 'ADMINISTRATOR CONTROLS',
+        //  'can' => 'administrator',
+        ],
+        [
+            'text' => 'Course Administration',
+            // 'can' => 'administrator',
+            'submenu'=> [
+                    [
+                        'text'=>'View Courses',
+                        'shift'=>'ml-3',
+                        'route' => 'courses.all',                        
+                    ],
+                    [
+                        'text'=>'Add Courses',
+                        'shift'=>'ml-3',
+                        'route' => 'courses.create',                        
+                    ],
+                    
+            ],
+        ],
+
         ['header' => 'labels'],
         [
             'text'       => 'important',
