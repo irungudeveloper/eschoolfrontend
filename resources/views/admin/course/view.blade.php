@@ -35,6 +35,7 @@
                         <th scope="col">Capacity</th>
                         <th scope="col">Cost</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Tutor</th>
                         <th scope="col">No. of Students</th>
                         <th scope="col">Actions</th>
@@ -48,12 +49,12 @@
                                 <td> {{ $data->course_capacity }} </td>
                                 <td> {{ $data->course_cost }} </td>
                                 <td> {{ $data->course_description }} </td>
+                                <td> <img src="{{ $data->course_image ?? " "}}" alt="" height="20px" width="20px"> </td>
                                 <td> {{ $data->tutor->name ?? 'Not Assigned'}} </td>
                                 <td> {{ $data->student_count }} </td>
-                                <td> <a href="#">EDIT</a> <a href="#">DELETE</a> </td>
+                                <td> <a href="{{route('course.edit',$data->id)}}">EDIT</a> <a href="{{route('course.delete',$data->id)}}">DELETE</a> </td>
                             </tr>
                         @endforeach
-                      
                     </tbody>
                   </table>
             </div>

@@ -415,6 +415,23 @@ return [
                     ],
                     
             ],
+
+            
+        ],
+        [
+            'text' => 'Blog Administration',
+            'submenu' => [
+                [
+                    'text'=>'View Blogs',
+                    'shift'=>'ml-1',
+                    'route'=>'blog.index',
+                ],
+                [
+                    'text'=>'Create Blog',
+                    'shift'=>'ml-1',
+                    'route'=>'blog.create',
+                ],
+            ],
         ],
 
         ['header' => 'labels'],

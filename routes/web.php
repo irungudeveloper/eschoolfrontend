@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,20 @@ Route::middleware('custom.auth')->group(function ()
     {
         Route::get('/courses', 'index')->name('courses.all');
         Route::get('/course/create', 'create')->name('courses.create');
+        Route::post('/course/post', 'post')->name('course.post');
+        Route::get('/course/edit/{id}','edit')->name('course.edit');
+        Route::post('/course/update/{id}','update')->name('course.update');
+        Route::get('/course/delete/{id}','delete')->name('course.delete');
+    });
+
+    Route::controller(BlogController::class)->group(function () 
+    {
+        Route::get('/blog/all', 'index')->name('blog.index');
+        Route::get('/blog/create','create')->name('blog.create');
+        Route::post('/blog/store', 'store')->name('blog.store');
+        Route::get('/blog/edit/{id}', 'edit')->name('blog.edit');
+        Route::post('/blog/update/{id}', 'update')->name('blog.update');
+        Route::get('/blog/delete/{id}', 'delete')->name('blog.delete');
     });
 
 });
