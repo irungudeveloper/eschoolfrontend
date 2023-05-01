@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,17 @@ Route::middleware('custom.auth')->group(function ()
         Route::get('/blog/edit/{id}', 'edit')->name('blog.edit');
         Route::post('/blog/update/{id}', 'update')->name('blog.update');
         Route::get('/blog/delete/{id}', 'delete')->name('blog.delete');
+    });
+
+    Route::controller(JobController::class)->group(function () 
+    {
+        Route::get('/jobs/all', 'index')->name('job.all');
+        Route::get('/job/create', 'create')->name('job.create');
+        Route::post('/job/store','store')->name('job.store');
+        Route::get('/job/edit/{id}','edit')->name('job.edit');
+        Route::post('/job/update/{id}', 'update')->name('job.update');
+        Route::get('/job/delete/{id}', 'delete')->name('job.delete');
+        Route::get('/job/applicants/{id}', 'applicants')->name('job.applicant');
     });
 
 });

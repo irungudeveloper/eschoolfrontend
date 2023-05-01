@@ -397,6 +397,7 @@ return [
         ],
 
         ['header'=> 'ADMINISTRATOR CONTROLS',
+        'classes'=>'mt-3',
         //  'can' => 'administrator',
         ],
         [
@@ -433,6 +434,22 @@ return [
                 ],
             ],
         ],
+        [
+            'text'=>'Job Administration',
+            'submenu'=>[
+                [
+                    'text'=>'View Job Posts',
+                    'shift'=>'ml-1',
+                    'route'=>'job.all',
+                ],             
+                [
+                    'text'=>'Create Job Post',
+                    'shift'=>'ml-1',
+                    'route'=>'job.create',
+                ],   
+            ],
+        ],
+
 
         ['header' => 'labels'],
         [
