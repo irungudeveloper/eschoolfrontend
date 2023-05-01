@@ -7,6 +7,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\TutorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,12 @@ Route::middleware('custom.auth')->group(function ()
         Route::post('/job/update/{id}', 'update')->name('job.update');
         Route::get('/job/delete/{id}', 'delete')->name('job.delete');
         Route::get('/job/applicants/{id}', 'applicants')->name('job.applicant');
+    });
+
+    Route::controller(TutorController::class)->group(function () 
+    {
+        Route::get('/tutor', 'index')->name('tutor.index');
+        // Route::post('/orders', 'store');
     });
 
 });
