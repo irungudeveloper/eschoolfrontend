@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\TutorController;
+use App\Http\Controllers\CourseTopicController;
+use App\Http\Controllers\CoursesubTopicController;
+use App\Http\Controllers\CourseMaterialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +57,8 @@ Route::middleware('custom.auth')->group(function ()
         Route::get('/course/edit/{id}','edit')->name('course.edit');
         Route::post('/course/update/{id}','update')->name('course.update');
         Route::get('/course/delete/{id}','delete')->name('course.delete');
+        Route::get('/course/topic', 'createTopic')->name('course.topic.create');
+        Route::post('/course/{course_id}/topic', 'createCourseTopic')->name('course.topic.store');
     });
 
     Route::controller(BlogController::class)->group(function () 
@@ -80,7 +85,37 @@ Route::middleware('custom.auth')->group(function ()
     Route::controller(TutorController::class)->group(function () 
     {
         Route::get('/tutor', 'index')->name('tutor.index');
+        Route::get('/tutor/courses', 'viewCourses')->name('tutor.courses');
         // Route::post('/orders', 'store');
+        Route::get('/tutor/course/{id}', 'viewCourse')->name('tutor.course');
+    });
+
+    Route::controller(CourseTopicController::class)->group(function()
+    {
+        Route::post('/topic/create', 'store')->name('topic.create');
+        Route::get('/topic/{id}/edit', 'edit')->name('topic.edit');
+        Route::post('/topic/{id}/update', 'update')->name('topic.update');
+        Route::get('/topic/{id}/delete', 'delete')->name('topic.delete');
+    });
+
+    Route::controller(CoursesubTopicController::class)->group(function()
+    {
+        Route::get('/subtopic/create','create')->name('subtopic.create');
+        Route::post('/subtopic/store', 'store')->name('subtopic.store');
+        Route::get('/subtopic/{id}/edit','edit')->name('subtopic.edit');
+        Route::post('/subtopic/{id}/update', 'update')->name('subtopic.update');
+        Route::get('/subtopic/{id}/delete','delete')->name('subtopic.delete');
+    });
+
+    Route::controller(CourseMaterialController::class)->group(function()
+    {
+
+        Route::get('/material/create', 'create')->name('material.create');
+        Route::post('/material/store', 'store')->name('material.store');
+        Route::get('/material/{id}/edit', 'edit')->name('material.edit');
+        Route::post('/material/{id}/update', 'update')->name('material.update');
+        Route::get('/material/{id}/delete', 'delete')->name('material.delete');
+
     });
 
 });

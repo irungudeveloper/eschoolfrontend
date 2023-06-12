@@ -450,6 +450,39 @@ return [
             ],
         ],
 
+        ['header'=>'TUTOR CONTROLS',
+         'classes'=>'mt-3',
+        ],
+        [
+            'text'=>'Course Administration',
+            'submenu'=>[
+                [
+                    'text'=>'View Courses',
+                    'shift'=>'ml-1',
+                    'route'=>'tutor.courses',
+                ],
+                [
+                    'text'=>'Course Material Controls',
+                    'submenu'=>[
+                            [
+                                'text'=>'Create Course Topic',
+                                'shift'=>'ml-1',
+                                'route'=>'course.topic.create',
+                            ],
+                            [
+                                'text'=>'Create Course Subtopic',
+                                'shift'=>'ml-2',
+                                'route'=>'subtopic.create',
+                            ],
+                            [
+                                'text'=>'Create Course Material',
+                                'shift'=>'ml-2',
+                                'route'=>'material.create',
+                            ],
+                        ],
+                    ],
+            ],
+        ],
 
         ['header' => 'labels'],
         [

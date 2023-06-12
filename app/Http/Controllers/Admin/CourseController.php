@@ -155,4 +155,43 @@ class CourseController extends Controller
     
     }
 
+    public function createTopic()
+    {
+        # code...
+        $request = Http::withToken(Session::get('token'))
+                        ->get('http://localhost:8001/api/tutor/courses');
+
+        if ($request->ok()) 
+        {
+            # code...
+            $responseBody = json_decode($request->body());
+            // return response()->json(['courses'=>$responseBody]);
+            return view('course.topic.create')->with('courses', $responseBody);
+        }
+
+        return response()->json(['statusCode'=>$request->status(),'body'=>$request->body()]);
+
+    }
+
+    public function createCourseTopic($course_id, Request $request)
+    {
+        # code...
+
+        $topic = Http::withToken(Session::get('token'))
+                        ->post('http://localhost:8001/api/course/'.$course_id.'/topic',[
+                                'name'=>$request->input('topic_name')
+                            ]);
+
+        if ($topic->ok()) 
+        {
+            # code...
+            $responseBody = json_decode($topic->body());
+
+            return response()->json($responseBody);
+        }
+
+        return $request->status();
+
+    }
+
 }
